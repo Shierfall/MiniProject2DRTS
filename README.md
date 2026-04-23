@@ -31,6 +31,17 @@ The project specifies **idleSlope = sendSlope = 0.5** for simplicity.  The tool
 defaults to this (`--policy fixed --alpha-a 0.5 --alpha-b 0.5`), so no extra flags are
 needed.
 
+Simplest run (point at one case directory):
+
+```bash
+python3 -m wcrt_tool tsn-test-cases/examples/test_case_1
+```
+
+This auto-loads `topology.json`, `streams.json`, `routes.json`, auto-detects
+`WCRTs.csv` if present, and writes outputs to `output_data/test_case_1/`.
+
+(`--input-dir tsn-test-cases/examples/test_case_1` is also supported as an alias.)
+
 ```bash
 python3 -m wcrt_tool \
   --topology tsn-test-cases/examples/test_case_1/topology.json \
@@ -69,12 +80,7 @@ preventing starvation of Best-Effort traffic under CBS while SP can starve it.
 
 ```bash
 for TC in test_case_1 test_case_2 test_case_3; do
-  python3 -m wcrt_tool \
-    --topology tsn-test-cases/examples/$TC/topology.json \
-    --streams  tsn-test-cases/examples/$TC/streams.json \
-    --routes   tsn-test-cases/examples/$TC/routes.json \
-    --reference tsn-test-cases/examples/$TC/WCRTs.csv \
-    --output   output_data/$TC
+  python3 -m wcrt_tool tsn-test-cases/examples/$TC
 done
 ```
 

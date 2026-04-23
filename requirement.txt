@@ -1,0 +1,20 @@
+# Consolidated dependencies for MiniProject2DRTS
+# Install with: python -m pip install -r requirement.txt
+
+# Runtime dependencies
+networkx>=3.0,<3.5
+jsonschema>=4.0
+pydantic>=2.0
+typer>=0.12
+rich>=13.7
+numpy>=1.24
+
+# Test dependencies
+pytest>=8.3.5
+pytest-mock>=3.14
+pytest-cov>=4.1
+coverage>=7.4
+
+# Optional plotting support for wcrt_tool (__main__._plot_credit)
+matplotlib>=3.8
+
