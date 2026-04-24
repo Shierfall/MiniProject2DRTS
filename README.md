@@ -2,7 +2,7 @@
 
 TSN-AVB worst-case response time (WCRT) analysis tool for 02225 DRTS Mini-Project 2.
 
-Implements the CBS eligible-interval method (Cao et al. 2016), a discrete-event simulator, and strict-priority RTA. Validates analytical bounds against simulation, generates comparison reports, and produces publication-ready figures.
+Implements CBS analytical WCRT, a discrete-event simulator, and strict-priority response-time analysis.
 
 ---
 
@@ -10,7 +10,7 @@ Implements the CBS eligible-interval method (Cao et al. 2016), a discrete-event 
 
 | Feature | Description |
 |---------|-------------|
-| CBS analytical WCRT | Eligible-interval method per Cao et al. 2016; SPI/HPI/LPI/C_i breakdown per link |
+| CBS analytical WCRT | Eligible-interval method /HPI/LPI/C_i breakdown per link |
 | SP analytical WCRT | Fixed-priority response-time analysis for all streams |
 | Discrete-event simulation | CBS or SP mode; captures per-stream WCRT, avg RT, deadline misses |
 | Validation | Confirms `analytical ≥ simulated` for every stream; writes ratio report |
@@ -18,7 +18,7 @@ Implements the CBS eligible-interval method (Cao et al. 2016), a discrete-event 
 | BE starvation detection | Flags streams starved under SP but not under CBS |
 | Credit traces | Class-B CBS credit over time per link (for plotting) |
 | Figure generation | 7 matplotlib figures: breakdowns, scatter, credit trace, BE comparison, schedulability |
-| idleSlope policies | `fixed` (α=0.5, project baseline) or `proportional` (utilisation-derived per spec §5.3) |
+| idleSlope policies | `fixed` (alpha=0.5, project baseline) or `proportional` (utilisation-derived from traffic parameters) |
 
 ---
 
@@ -75,7 +75,7 @@ done
 python3 -m wcrt_tool tsn-test-cases/examples/test_case_1 --policy proportional
 ```
 
-Derives per-link slopes from stream utilisation (Implementation_spec.md §5.3). Produces tighter bounds when link utilisations differ.
+Derives per-link slopes from stream utilisation. Produces tighter bounds when link utilisations differ.
 
 ---
 
@@ -138,7 +138,7 @@ python3 -m wcrt_tool.generate_figures
 
 ## Input File Format
 
-Three JSON files per test case (see `tsn-test-cases/docs/file_format_specs.v2.md` for full spec):
+Three JSON files per test case:
 
 - **`topology.json`**: nodes (ES, switches) and unidirectional links with bandwidth/delay
 - **`streams.json`**: traffic flows: priority class, frame size, period, deadline
@@ -148,7 +148,7 @@ Three JSON files per test case (see `tsn-test-cases/docs/file_format_specs.v2.md
 
 ## Project Baseline
 
-Spec requires **idleSlope = sendSlope = 0.5**. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5`; no extra flags needed.
+Project baseline uses **idleSlope = sendSlope = 0.5**. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5`; no extra flags needed.
 
 ### Note on test_case_2
 
