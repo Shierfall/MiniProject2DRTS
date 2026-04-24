@@ -1,0 +1,378 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "delay_units": {
+      "type": "string"
+    },
+    "streams": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "destinations": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                }
+              ]
+            },
+            "type": {
+              "type": "string"
+            },
+            "PCP": {
+              "type": "integer"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "integer"
+            },
+            "redundancy": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "source",
+            "destinations",
+            "type",
+            "PCP",
+            "size",
+            "period",
+            "redundancy"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "destinations": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                }
+              ]
+            },
+            "type": {
+              "type": "string"
+            },
+            "PCP": {
+              "type": "integer"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "integer"
+            },
+            "redundancy": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "source",
+            "destinations",
+            "type",
+            "PCP",
+            "size",
+            "period",
+            "redundancy"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "destinations": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                }
+              ]
+            },
+            "type": {
+              "type": "string"
+            },
+            "PCP": {
+              "type": "integer"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "integer"
+            },
+            "redundancy": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "source",
+            "destinations",
+            "type",
+            "PCP",
+            "size",
+            "period",
+            "redundancy"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "destinations": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                }
+              ]
+            },
+            "type": {
+              "type": "string"
+            },
+            "PCP": {
+              "type": "integer"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "null"
+            },
+            "redundancy": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "source",
+            "destinations",
+            "type",
+            "PCP",
+            "size",
+            "period",
+            "redundancy"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "destinations": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "deadline": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "deadline"
+                  ]
+                }
+              ]
+            },
+            "type": {
+              "type": "string"
+            },
+            "PCP": {
+              "type": "integer"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "period": {
+              "type": "null"
+            },
+            "redundancy": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "source",
+            "destinations",
+            "type",
+            "PCP",
+            "size",
+            "period",
+            "redundancy"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "delay_units",
+    "streams"
+  ]
+}

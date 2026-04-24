@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AUDIO/VOICE",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": { "const": "AUDIO/VOICE" },
+    "PCP-list": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "integer", "minimum": 0, "maximum": 7 }
+    },
+    "number": { "type": "integer", "minimum": 0 },
+    "min_delay": { "type": "integer", "minimum": 0 },
+    "max_delay": { "type": "integer", "minimum": 0 },
+    "min_packet_size": { "type": "integer", "minimum": 1 },
+    "max_packet_size": { "type": "integer", "minimum": 1 },
+    "bidirectional": { "type": "boolean" }
+  },
+  "required": ["name", "PCP-list", "number", "min_delay", "max_delay", "min_packet_size", "max_packet_size", "bidirectional"]
+}

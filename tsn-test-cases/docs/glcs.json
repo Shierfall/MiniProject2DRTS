@@ -1,0 +1,69 @@
+{
+  "delay_units": "NANO_SECOND",
+  "gcls": [
+    {
+      "node_id": "sw_0_0",
+      "port_id": 0,
+      "cycle_time_us": 200,
+      "entries": [
+        {
+          "index": 0,
+          "gate_states": 0, // Guard Band State
+          "time_interval_ns": 114
+        },
+        {
+          "index": 1,
+          "gate_states": 128, // TSN Traffic Window State
+          "time_interval_ns": 886
+        },
+        {
+          "index": 2,
+          "gate_states": 0, // Guard Band State
+          "time_interval_ns": 114
+        },
+        {
+          "index": 3,
+          "gate_states": 128, // TSN Traffic Window State
+          "time_interval_ns": 886
+        },
+        {
+          "index": 4,
+          "gate_states": 127, // Non-TSN Traffic Window State
+          "time_interval_ns": 114
+        },
+        {
+          "index": 5,
+          "gate_states": 0, // Guard Band State
+          "time_interval_ns": 114
+        },
+        {
+          "index": 6,
+          "gate_states": 128, // TSN Traffic Window State
+          "time_interval_ns": 1234
+        },
+        {
+          "index": 7,
+          "gate_states": 127, // Non-TSN Traffic Window State
+          "time_interval_ns": 114
+        },
+        {
+          "index": 8,
+          "gate_states": 0, // Guard Band State
+          "time_interval_ns": 98652
+        }
+      ]
+    },
+    {
+      "node_id": "es_0_0_0_0",
+      "port_id": 0,
+      "cycle_time_us": 200,
+      "entries": [
+        {
+          "index": 0,
+          "gate_states": 128, // TSN Traffic Window State
+          "time_interval_ns": 200000
+        }
+      ]
+    }
+  ]
+}

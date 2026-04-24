@@ -1,0 +1,84 @@
+{
+  "delay_units": "MICRO_SECOND",
+  "general": {
+    "output_directory": "simulations",
+    "num_test_cases": 3,
+    "num_domains": 1,
+    "topology_size": {
+      "num_switches": 10,
+      "num_end_systems": 20,
+      "end_systems_per_switch": [0, 4]
+    },
+    "cross_domain_streams": 0,
+    "generate_routes": true,
+    "test_case_naming": "test_case_{}"
+  },
+  "network": {
+    "topology_type": "mesh_graph",
+    "parameters": "{'n': 4, 'm': 4}",
+    "default_bandwidth_mbps": 1000,
+    "constraints": {
+      "max_path_length": 5
+    }
+  },
+  "domain_connections": {
+    "type": "line",
+    "connections_per_domain_pair": 2
+  },
+  "routing": {
+    "algorithm": "shortest_path",
+    "consider_link_utilization": true
+  },
+  "traffic": {
+    "types": [
+      {
+        "name": "ISOCHRONOUS",
+        "PCP-list": [7],
+        "number": 50,
+        "redundant_number": 0,
+        "redundant_routes": 0,
+        "cycle_time": {
+          "cycle_time_units": "MICRO_SECOND",
+          "choose_list": true,
+          "cycle_time_list": [
+            2000,
+            4000
+          ],
+          "min_cycle_time": 2000,
+          "max_cycle_time": 4000
+        },
+        "min_delay": 10000,
+        "max_delay": 20000,
+        "min_packet_size": 30,
+        "max_packet_size": 100,
+        "bidirectional": false
+      },
+      {
+        "name": "CYCLIC-ASYNCHRONOUS",
+        "PCP-list": [
+          4,
+          3
+        ],
+        "number": 50,
+        "redundant_number": 0,
+        "redundant_routes": 0,
+        "cycle_time": {
+            "cycle_time_units": "MICRO_SECOND",
+            "choose_list": true,
+            "cycle_time_list": [
+               2000,
+               10000,
+               20000
+            ],
+            "min_cycle_time": 2000,
+            "max_cycle_time": 20000
+        },
+        "min_delay": 10000,
+        "max_delay": 20000,
+        "min_packet_size": 50,
+        "max_packet_size": 1000,
+        "bidirectional": false
+      }
+    ]
+  }
+}

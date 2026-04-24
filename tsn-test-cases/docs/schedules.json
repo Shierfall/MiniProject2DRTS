@@ -1,0 +1,44 @@
+{
+  "schedules": [
+    {
+      "link_id": "e1",
+      "schedule_entries": [
+        {
+          "stream_id": 0,
+          "frame_instance": 1,
+          "offset_us": 0,
+          "duration_us": 12.336
+        },
+        {
+          "stream_id": 1,
+          "frame_instance": 1,
+          "offset_us": 18,
+          "duration_us": 12.336
+        },
+        {
+          "stream_id": 1,
+          "frame_instance": 2,
+          "offset_us": 31,
+          "duration_us": 12.336
+        },
+        {
+          "stream_id": 1,
+          "frame_instance": 3,
+          "offset_us": 44,
+          "duration_us": 12.336
+        }
+      ]
+    },
+    {
+      "link_id": "e2",
+      "schedule_entries": [
+        {
+          "stream_id": 2,
+          "frame_instance": 1,
+          "offset_us": 0,
+          "duration_us": 12.336
+        }
+      ]
+    }
+  ]
+}

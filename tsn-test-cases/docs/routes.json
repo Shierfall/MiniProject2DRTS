@@ -1,0 +1,45 @@
+{
+  "delay_units": "MICRO_SECOND",  
+  "routes": [
+      {
+        "flow_id": 0,
+        "paths": [
+          [
+            {"node": "node0_0_80_1", "port": 0},
+            {"node": "sw_0_1", "port": 0},
+            {"node": "sw_0_2", "port": 0},
+            {"node": "sw_0_3", "port": 0},
+            {"node": "node0_0_68_1", "port": 0}
+          ]
+        ],
+        "min_e2e_delay": 200
+      },
+        {
+        "flow_id": 150,
+         "paths": [
+          [
+                {"node": "node0_0_103_0", "port": 0},
+                {"node": "sw_0_37", "port": 7},
+            {"node": "sw_0_41", "port": 0},
+                {"node": "sw_0_42", "port": 1},
+                {"node": "sw_0_43", "port": 2},
+                {"node": "sw_0_44", "port": 4},
+                {"node": "sw_0_52", "port": 2},
+                {"node": "sw_0_53", "port": 0},
+                {"node": "node0_0_126_1", "port": 0}
+           ],
+          [
+                 {"node": "node0_0_103_0", "port": 0},
+                {"node": "sw_0_37", "port": 6},
+            {"node": "sw_0_38", "port": 0},
+                {"node": "sw_0_45", "port": 2},
+                {"node": "sw_0_46", "port": 1},
+                {"node": "sw_0_47", "port": 0},
+                {"node": "sw_0_55", "port": 3},
+                {"node": "node0_0_12_0", "port": 0}
+           ]
+        ],
+        "min_e2e_delay": 200
+      }
+    ]
+  }

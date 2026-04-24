@@ -1,0 +1,57 @@
+{
+  "delay_units": "MICRO_SECOND",  
+  "streams": [
+      {
+        "id": 0,
+        "name": "Stream_1",
+        "source": "node0_0_0_0",
+        "destinations": [
+          {"id": "node0_0_2_0", "deadline": 2000000}
+        ],
+        "type": "ISOCHRONOUS",
+        "PCP": 7,
+        "size": 12192,
+        "period": 2000000,
+        "redundancy": 0
+      },
+      {
+        "id": 1,
+        "name": "Stream_2",
+        "source": "node0_0_0_0",
+        "destinations": [
+          {"id": "node0_0_2_0", "deadline": 2000000}
+        ],
+        "type": "CYCLIC-ASYNCHRONOUS",
+        "PCP": 4,
+        "size": 12192,
+        "period": 2000000,
+        "redundancy": 0
+      },
+      {
+        "id": 2,
+        "name": "Stream_3",
+        "source": "node0_0_3_0",
+        "destinations": [
+          {"id": "node0_0_1_0", "deadline": 2000000}
+        ],
+        "type": "CYCLIC-ASYNCHRONOUS",
+        "PCP": 4,
+        "size": 12192,
+        "period": 2000000,
+        "redundancy": 0
+      },
+      {
+        "id": 3,
+        "name": "Stream_4",
+        "source": "node0_0_3_1",
+        "destinations": [
+          {"id": "node0_0_1_1", "deadline": 2000000}
+        ],
+        "type": "CYCLIC-ASYNCHRONOUS",
+        "PCP": 0,
+        "size": 12192,
+        "period": 2000000,
+        "redundancy": 0
+      }
+    ]
+  }

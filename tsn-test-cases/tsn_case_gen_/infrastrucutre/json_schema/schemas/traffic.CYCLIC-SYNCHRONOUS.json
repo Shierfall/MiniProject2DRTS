@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CYCLIC-SYNCHRONOUS",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": { "const": "CYCLIC-SYNCHRONOUS" },
+    "PCP-list": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 0, "maximum": 7 } },
+    "number": { "type": "integer", "minimum": 0 },
+    "redundant_number": { "type": "integer", "minimum": 0 },
+    "redundant_routes": { "type": "integer", "minimum": 0 },
+    "cycle_time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cycle_time_units": { "type": "string", "enum": ["NANO_SECOND", "MICRO_SECOND", "MILLI_SECOND", "SECOND"] },
+        "choose_list": { "type": "boolean" },
+        "cycle_time_list": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 1 } },
+        "min_cycle_time": { "type": "integer", "minimum": 1 },
+        "max_cycle_time": { "type": "integer", "minimum": 1 }
+      },
+      "required": ["cycle_time_units", "choose_list", "cycle_time_list", "min_cycle_time", "max_cycle_time"]
+    },
+    "min_delay": { "type": "integer", "minimum": 0 },
+    "max_delay": { "type": "integer", "minimum": 0 },
+    "min_packet_size": { "type": "integer", "minimum": 1 },
+    "max_packet_size": { "type": "integer", "minimum": 1 },
+    "bidirectional": { "type": "boolean" }
+  },
+  "required": ["name", "PCP-list", "number", "redundant_number", "redundant_routes", "cycle_time", "min_delay", "max_delay", "min_packet_size", "max_packet_size", "bidirectional"]
+}

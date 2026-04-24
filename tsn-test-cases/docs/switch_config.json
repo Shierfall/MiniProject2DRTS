@@ -1,0 +1,47 @@
+{
+  "total_queues": 8,
+  "queue_assignments": [
+    {
+      "queue_index": 7,
+      "shaper_type": "TAS",
+      "PCP_list": [7]
+    },
+    {
+      "queue_index": 6,
+      "shaper_type": "TAS", 
+      "PCP_list": [6]
+    },
+    {
+      "queue_index": 5,
+      "shaper_type": "MCQF",
+      "PCP_list": [5],
+      "params": "bandwidth_fraction=0.3; cycle_length_us=10"
+    },
+    {
+      "queue_index": 4,
+      "shaper_type": "MCQF",
+      "PCP_list": [5]
+    },
+    {
+      "queue_index": 3,
+      "shaper_type": "MCQF",
+      "PCP_list": [5]
+    },
+    {
+      "queue_index": 2,
+      "shaper_type": "MCQF",
+      "PCP_list": [4],
+      "params": "bandwidth_fraction=0.3; cycle_length_us=40"
+    },
+    {
+      "queue_index": 1,
+      "shaper_type": "MCQF",
+      "PCP_list": [4]
+    },
+    {
+      "queue_index": 0,
+      "shaper_type": "StrictPriority",
+      "PCP_list": [0, 1, 2, 3]
+    }
+  ]
+}

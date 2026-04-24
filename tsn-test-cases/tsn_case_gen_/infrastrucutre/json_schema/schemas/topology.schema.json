@@ -1,0 +1,1174 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "topology": {
+      "type": "object",
+      "properties": {
+        "delay_units": {
+          "type": "string"
+        },
+        "default_bandwidth_mbps": {
+          "type": "integer"
+        },
+        "switches": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "ports": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "ports",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "ports": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "ports",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "ports": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "ports",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "ports": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "ports",
+                "domain"
+              ]
+            }
+          ]
+        },
+        "end_systems": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "domain"
+              ]
+            }
+          ]
+        },
+        "links": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "sourcePort": {
+                  "type": "integer"
+                },
+                "destinationPort": {
+                  "type": "integer"
+                },
+                "domain": {
+                  "type": "integer"
+                },
+                "bandwidth_mbps": {
+                  "type": "integer"
+                },
+                "delay": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "source",
+                "destination",
+                "sourcePort",
+                "destinationPort",
+                "domain",
+                "bandwidth_mbps",
+                "delay"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "delay_units",
+        "default_bandwidth_mbps",
+        "switches",
+        "end_systems",
+        "links"
+      ]
+    }
+  },
+  "required": [
+    "topology"
+  ]
+}

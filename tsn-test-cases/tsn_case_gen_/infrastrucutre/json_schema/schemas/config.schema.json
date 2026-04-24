@@ -1,0 +1,204 @@
+  {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://example.com/schemas/sim-config-2.0.json",
+    "title": "Simulation Config v2.0",
+    "type": "object",
+    "additionalProperties": false,
+
+    "definitions": {
+      "timeUnit": {
+        "type": "string",
+        "enum": ["NANO_SECOND", "MICRO_SECOND", "MILLI_SECOND"]
+      },
+      "pcp": { "type": "integer", "minimum": 0, "maximum": 7 },
+      "trafficType": {
+        "type": "string",
+        "enum": [
+          "ISOCHRONOUS",
+          "CYCLIC-SYNCHRONOUS",
+          "CYCLIC-ASYNCHRONOUS",
+          "NETWORK-CONTROL",
+          "ALARMS-AND-EVENTS",
+          "DIAGNOSTICS",
+          "VIDEO",
+          "BEST-EFFORT",
+          "AUDIO/VOICE"
+        ]
+      }
+    },
+
+    "properties": {
+      "schema_version": { "type": "string", "enum": ["2.0"] },
+
+      "delay_units": { "$ref": "#/definitions/timeUnit" },
+
+      "general": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "output_directory": { "type": "string", "minLength": 1 },
+          "num_test_cases": { "type": "integer", "minimum": 1 },
+          "num_domains": { "type": "integer", "minimum": 0 },
+          "topology_size": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "num_switches": { "type": "integer", "minimum": 1 },
+              "num_end_systems": { "type": "integer", "minimum": 1 },
+              "end_systems_per_switch": {
+                "type": "array",
+                "items": { "type": "integer", "minimum": 0 },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "required": ["num_switches", "num_end_systems", "end_systems_per_switch"]
+          },
+          "cross_domain_streams": { "type": "integer", "minimum": 0 },
+          "generate_routes": { "type": "boolean" },
+          "test_case_naming": { "type": "string", "minLength": 1 }
+        },
+        "required": [
+          "output_directory",
+          "num_test_cases",
+          "num_domains",
+          "topology_size",
+          "cross_domain_streams",
+          "test_case_naming"
+        ]
+      },
+
+      "network": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "topology_type": {
+            "type": "string",
+            "enum": ["mesh_graph", "ring", "star", "tree", "line", "custom"]
+          },
+          "parameters": {
+            "oneOf": [
+              { "type": "object" },
+              { "type": "string" }
+            ],
+            "description": "Prefer object; string accepted for migration."
+          },
+          "default_bandwidth_mbps": { "type": "integer", "minimum": 1 },
+          "constraints": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "max_path_length": { "type": "integer", "minimum": 1 },
+              "min_redundant_paths": { "type": "integer", "minimum": 0 }
+            },
+            "required": ["max_path_length"]
+          }
+        },
+        "required": ["topology_type", "parameters", "default_bandwidth_mbps", "constraints"]
+      },
+
+      "routing": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "algorithm": { "type": "string", "minLength": 1 },
+          "consider_link_utilization": { "type": "boolean" }
+        },
+        "required": ["consider_link_utilization"]
+      },
+
+      "domain_connections": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["line", "full_mesh", "random", "sparse", "custom"]
+          },
+          "connections_per_domain_pair": { "type": "integer", "minimum": 0 }
+        },
+        "required": ["type", "connections_per_domain_pair"]
+      },
+
+      "traffic": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "types": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "name": { "$ref": "#/definitions/trafficType" },
+                "PCP-list": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/pcp" },
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                },
+                "number": { "type": "integer", "minimum": 0 },
+
+                "cycle_time": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "cycle_time_units": { "$ref": "#/definitions/timeUnit" },
+                    "choose_list": { "type": "boolean" },
+                    "cycle_time_list": {
+                      "type": "array",
+                      "items": { "type": "integer", "minimum": 1 },
+                      "minItems": 1
+                    },
+                    "min_cycle_time": { "type": "integer", "minimum": 1 },
+                    "max_cycle_time": { "type": "integer", "minimum": 1 }
+                  },
+                  "required": ["cycle_time_units", "choose_list"],
+                  "anyOf": [
+                    {
+                      "properties": { "choose_list": { "enum": [true] } },
+                      "required": ["cycle_time_list"]
+                    },
+                    {
+                      "properties": { "choose_list": { "enum": [false] } },
+                      "required": ["min_cycle_time", "max_cycle_time"]
+                    }
+                  ]
+                },
+
+                "min_delay": { "type": "integer", "minimum": 0 },
+                "max_delay": { "type": "integer", "minimum": 0 },
+                "min_packet_size": { "type": "integer", "minimum": 1, "maximum": 9000 },
+                "max_packet_size": { "type": "integer", "minimum": 1, "maximum": 9000 },
+                "bidirectional": { "type": "boolean" }
+              },
+              "required": [
+                "name",
+                "PCP-list",
+                "number",
+                "cycle_time",
+                "min_delay",
+                "max_delay",
+                "min_packet_size",
+                "max_packet_size",
+                "bidirectional"
+              ]
+            }
+          }
+        },
+        "required": ["types"]
+      }
+    },
+
+    "required": [
+      "schema_version",
+      "delay_units",
+      "general",
+      "network",
+      "routing",
+      "domain_connections",
+      "traffic"
+    ]
+  }

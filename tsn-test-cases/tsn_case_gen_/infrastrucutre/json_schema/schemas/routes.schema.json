@@ -1,0 +1,693 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "delay_units": {
+      "type": "string"
+    },
+    "routes": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "flow_id": {
+              "type": "integer"
+            },
+            "paths": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "min_e2e_delay": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "flow_id",
+            "paths",
+            "min_e2e_delay"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "flow_id": {
+              "type": "integer"
+            },
+            "paths": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "min_e2e_delay": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "flow_id",
+            "paths",
+            "min_e2e_delay"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "flow_id": {
+              "type": "integer"
+            },
+            "paths": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "min_e2e_delay": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "flow_id",
+            "paths",
+            "min_e2e_delay"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "flow_id": {
+              "type": "integer"
+            },
+            "paths": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "min_e2e_delay": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "flow_id",
+            "paths",
+            "min_e2e_delay"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "flow_id": {
+              "type": "integer"
+            },
+            "paths": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "node": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "node",
+                        "port"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "min_e2e_delay": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "flow_id",
+            "paths",
+            "min_e2e_delay"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "delay_units",
+    "routes"
+  ]
+}
