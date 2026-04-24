@@ -2,7 +2,7 @@
 
 TSN-AVB worst-case response time (WCRT) analysis tool for 02225 DRTS Mini-Project 2.
 
-Implements the CBS eligible-interval method (Cao et al. 2016), a discrete-event simulator, and strict-priority RTA — all in one pipeline. Validates analytical bounds against simulation, generates comparison reports, and produces publication-ready figures.
+Implements the CBS eligible-interval method (Cao et al. 2016), a discrete-event simulator, and strict-priority RTA. Validates analytical bounds against simulation, generates comparison reports, and produces publication-ready figures.
 
 ---
 
@@ -42,7 +42,7 @@ All 22 tests pass, including exact-value checks for `test_case_1` and `test_case
 
 ## Usage
 
-### Simple mode — point at a case directory
+### Simple mode: point at a case directory
 
 ```bash
 python3 -m wcrt_tool tsn-test-cases/examples/test_case_1
@@ -83,11 +83,11 @@ Derives per-link slopes from stream utilisation (Implementation_spec.md §5.3). 
 
 | Argument | Default | Description |
 |----------|---------|-------------|
-| `case` (positional) | — | Case directory with `topology.json`, `streams.json`, `routes.json` |
-| `--input-dir` | — | Alias for positional case path |
-| `--topology` | — | Explicit path to `topology.json` |
-| `--streams` | — | Explicit path to `streams.json` |
-| `--routes` | — | Explicit path to `routes.json` |
+| `case` (positional) | (required) | Case directory with `topology.json`, `streams.json`, `routes.json` |
+| `--input-dir` | (required) | Alias for positional case path |
+| `--topology` | (required) | Explicit path to `topology.json` |
+| `--streams` | (required) | Explicit path to `streams.json` |
+| `--routes` | (required) | Explicit path to `routes.json` |
 | `--reference` | auto-detect | Reference `WCRTs.csv` for comparison |
 | `--output` | `output_data/<case>` | Output directory |
 | `--mode` | `cbs` | Scheduling mode: `cbs` or `sp` |
@@ -126,13 +126,13 @@ python3 -m wcrt_tool.generate_figures
 
 | Figure | File | Description |
 |--------|------|-------------|
-| 1 | `fig_wcrt_breakdown_tc1.png` | Stacked-bar WCRT breakdown (SPI/HPI/LPI/C_i) per stream — TC1 |
+| 1 | `fig_wcrt_breakdown_tc1.png` | Stacked-bar WCRT breakdown (SPI/HPI/LPI/C_i) per stream, TC1 |
 | 2 | `fig_analytical_vs_sim.png` | Analytical vs simulated WCRT across all three test cases |
-| 3 | `fig_cbs_vs_sp.png` | CBS vs strict-priority side-by-side — TC1 |
-| 4 | `fig_credit_trace.png` | Class-B CBS credit evolution on Link 2 — TC1, first 2.5 ms |
+| 3 | `fig_cbs_vs_sp.png` | CBS vs strict-priority side-by-side, TC1 |
+| 4 | `fig_credit_trace.png` | Class-B CBS credit evolution on Link 2, TC1, first 2.5 ms |
 | 5 | `fig_bound_tightness.png` | Analytical/simulated ratio scatter across test cases (Class A & B) |
 | 6 | `fig_be_comparison.png` | Best-effort mean WCRT: CBS vs SP across all test cases |
-| 7 | `fig_schedulability.png` | Analytical WCRT vs deadline scatter — all three test cases |
+| 7 | `fig_schedulability.png` | Analytical WCRT vs deadline scatter, all three test cases |
 
 ---
 
@@ -140,15 +140,15 @@ python3 -m wcrt_tool.generate_figures
 
 Three JSON files per test case (see `tsn-test-cases/docs/file_format_specs.v2.md` for full spec):
 
-- **`topology.json`** — nodes (ES, switches) and unidirectional links with bandwidth/delay
-- **`streams.json`** — traffic flows: priority class, frame size, period, deadline
-- **`routes.json`** — pre-computed hop sequence per stream
+- **`topology.json`**: nodes (ES, switches) and unidirectional links with bandwidth/delay
+- **`streams.json`**: traffic flows: priority class, frame size, period, deadline
+- **`routes.json`**: pre-computed hop sequence per stream
 
 ---
 
 ## Project Baseline
 
-Spec requires **idleSlope = sendSlope = 0.5**. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5` — no extra flags needed.
+Spec requires **idleSlope = sendSlope = 0.5**. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5`; no extra flags needed.
 
 ### Note on test_case_2
 
@@ -175,7 +175,7 @@ MiniProject2DRTS/
 │       ├── test_case_1/
 │       ├── test_case_2/
 │       └── test_case_3/
-├── output_data/             # Generated — created on first run
+├── output_data/             # Generated on first run
 ├── requirement.txt
 └── README.md
 ```

@@ -196,13 +196,18 @@ def fig_credit_trace() -> None:
     mask = t <= 2500
     t = t[mask]; cr = cr[mask]
 
+    # Eligible moments: credit == 0 (CBS never accumulates above 0).
+    # Mark them as vertical tick-marks on the zero line instead of a fill.
+    eligible_t = t[cr >= -1e-6]
+
     fig, ax = plt.subplots(figsize=(7, 2.8))
     ax.step(t, cr, where="post", color=C_CBS, linewidth=1.5)
     ax.axhline(0, color="black", linewidth=0.7, linestyle="--", alpha=0.6)
     ax.fill_between(t, cr, 0, step="post",
-                    where=(cr < 0), alpha=0.15, color="red",  label="Negative credit (blocked)")
-    ax.fill_between(t, cr, 0, step="post",
-                    where=(cr >= 0), alpha=0.15, color="green", label="Non-negative credit (eligible)")
+                    where=(cr < 0), alpha=0.15, color="red", label="Negative credit (blocked)")
+    # Show eligible instants as small green markers on the zero-line
+    ax.scatter(eligible_t, np.zeros_like(eligible_t),
+               color="green", s=18, zorder=4, label="Eligible (credit ≥ 0)")
 
     ax.set_xlabel("Simulation time (μs)")
     ax.set_ylabel("Class B credit (μs equivalent)")
