@@ -10,7 +10,7 @@ Implements CBS analytical WCRT, a discrete-event simulator, and strict-priority 
 
 | Feature | Description |
 |---------|-------------|
-| CBS analytical WCRT | Eligible-interval method /HPI/LPI/C_i breakdown per link |
+| CBS analytical WCRT | Eligible-interval method; SPI/HPI/LPI/C_i breakdown per link |
 | SP analytical WCRT | Fixed-priority response-time analysis for all streams |
 | Discrete-event simulation | CBS or SP mode; captures per-stream WCRT, avg RT, deadline misses |
 | Validation | Confirms `analytical ≥ simulated` for every stream; writes ratio report |
@@ -33,10 +33,11 @@ python3 -m pip install -r requirement.txt
 ## Run Tests
 
 ```bash
-python3 -m pytest -v wcrt_tool/tests/test_spec_pipeline.py
+python3 -m pytest -v wcrt_tool/tests/
 ```
 
-All 22 tests pass, including exact-value checks for `test_case_1` and `test_case_3`.
+All 27 tests pass: 22 pipeline tests (exact-value checks for `test_case_1` and `test_case_3`,
+simulation upper-bound invariants) and 5 CLI usability tests.
 
 ---
 
@@ -169,7 +170,7 @@ MiniProject2DRTS/
 │   ├── report.py            # CSV report writers
 │   ├── generate_figures.py  # Matplotlib figure generation (7 figures)
 │   ├── figures/             # Generated figure output
-│   └── tests/               # pytest test suite (22 tests)
+│   └── tests/               # pytest test suite (27 tests)
 ├── tsn-test-cases/
 │   └── examples/
 │       ├── test_case_1/
