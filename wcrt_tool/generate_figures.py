@@ -93,9 +93,9 @@ def fig_wcrt_breakdown_tc1() -> None:
     ax.set_xticks(x); ax.set_xticklabels(labels)
     ax.set_ylabel("WCRT (μs)")
     ax.set_title("Per-stream WCRT breakdown — Test Case 1 (α = 0.5, 100 Mb/s)")
-    ax.legend(loc="upper left", ncol=2)
     ax.set_ylim(0, max(total) * 1.18)
     ax.axhline(1000, color="red", linewidth=0.8, linestyle="--", label="Deadline")
+    ax.legend(loc="upper left", ncol=2)
     ax.spines[["top", "right"]].set_visible(False)
     savefig("fig_wcrt_breakdown_tc1.png")
 
@@ -293,8 +293,8 @@ def fig_be_comparison() -> None:
     ax.legend()
     ax.spines[["top", "right"]].set_visible(False)
 
-    note = ("Under CBS, BE frames benefit from credit-controlled bursting:\n"
-            "Class A/B cannot monopolise the link indefinitely, limiting BE delay.\n"
+    note = ("Under CBS, Class A/B credit depletes when transmitting, allowing BE gaps;\n"
+            "BE delay is load-dependent and may exceed SP at low AVB utilisation.\n"
             "Under SP, BE is fully pre-empted by any higher-priority activity.")
     ax.text(0.5, -0.28, note, transform=ax.transAxes, ha="center",
             fontsize=7, style="italic", color="#444")

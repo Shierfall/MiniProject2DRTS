@@ -12,6 +12,7 @@ from .simulator import simulate
 
 def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="AVB/CBS WCRT analytical + simulation tool")
+    parser.add_argument("--web", action="store_true", help="Launch the Flask web GUI on http://127.0.0.1:5000")
     parser.add_argument(
         "case",
         nargs="?",
@@ -111,6 +112,12 @@ def _resolve_input_paths(args: argparse.Namespace) -> tuple[Path, Path, Path, Pa
 
 def main() -> None:
     args = _parse_args()
+    if args.web:
+        from .web import main as web_main
+        print("Starting web GUI at http://127.0.0.1:5000  (Ctrl+C to stop)")
+        web_main()
+        return
+
     topology_path, streams_path, routes_path, reference_path, output_dir = _resolve_input_paths(args)
     scenario = load_scenario(
         topology_path=topology_path,

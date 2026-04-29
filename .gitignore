@@ -2,7 +2,7 @@
 .pytest_cache/
 __pycache__/
 *.py[cod]
-
+wcrt_tool/figures/
 context/
 output_data/
 report/

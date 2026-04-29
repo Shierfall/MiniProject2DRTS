@@ -18,3 +18,6 @@ coverage>=7.4
 # Optional plotting support for wcrt_tool (__main__._plot_credit)
 matplotlib>=3.8
 
+# Web GUI
+flask>=3.0
+
