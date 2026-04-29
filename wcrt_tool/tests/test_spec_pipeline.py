@@ -118,14 +118,8 @@ def test_pipeline_test_case_2_runs() -> None:
     assert all(simulation.response_times_by_stream[stream.stream_id] for stream in scenario.streams)
 
 
-def test_analytical_wcrt_test_case_2_uses_actual_link_bandwidth() -> None:
-    """test_case_2 has a 1 Gbps inter-switch link; our tool correctly uses actual bandwidth.
-
-    The reference WCRTs.csv for test_case_2 was produced by a tool that treated all links
-    as 100 Mbps (default_bandwidth_mbps), ignoring the 1 Gbps link.  Our implementation
-    follows the spec (C_i = frame_size / actual_BW), which yields lower (tighter) WCRTs on
-    the fast inter-switch segment.  Both results are valid upper bounds; ours are tighter.
-    """
+def test_analytical_wcrt_test_case_2_matches_reference() -> None:
+    """Analytical WCRTs match reference exactly; all links are 100 Mbps (default_bandwidth_mbps)."""
     case_dir = EXAMPLES / "test_case_2"
     scenario = load_scenario(
         topology_path=case_dir / "topology.json",
@@ -138,10 +132,8 @@ def test_analytical_wcrt_test_case_2_uses_actual_link_bandwidth() -> None:
     ref = _read_reference(case_dir / "WCRTs.csv")
     for stream_id, ref_wcrt in ref.items():
         our_wcrt = analytical[stream_id].total_wcrt_us
-        # Our values must be positive upper bounds; reference (100 Mbps model) is more conservative.
-        assert our_wcrt > 0.0
-        assert our_wcrt <= ref_wcrt + 0.01, (
-            f"Stream {stream_id}: our WCRT {our_wcrt:.3f} exceeds the 100-Mbps reference {ref_wcrt:.3f}"
+        assert abs(our_wcrt - ref_wcrt) < 0.01, (
+            f"Stream {stream_id}: computed {our_wcrt:.3f} != reference {ref_wcrt:.3f}"
         )
 
 
