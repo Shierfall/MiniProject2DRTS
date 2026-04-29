@@ -32,7 +32,6 @@
         "sourcePort": 2,
         "destinationPort": 2,
         "domain": 0,
-        "bandwidth_mbps": 1000,
         "delay": 31.9
       },
       {
@@ -42,7 +41,6 @@
         "sourcePort": 2,
         "destinationPort": 2,
         "domain": 0,
-        "bandwidth_mbps": 1000,
         "delay": 31.9
       },
       {
@@ -52,7 +50,6 @@
         "sourcePort": 6,
         "destinationPort": 0,
         "domain": 0,
-        "bandwidth_mbps": 100,
         "delay": 5.731
       },
       {
@@ -62,7 +59,6 @@
         "sourcePort": 0,
         "destinationPort": 6,
         "domain": 0,
-        "bandwidth_mbps": 100,
         "delay": 5.731
       },
       {
@@ -72,7 +68,6 @@
         "sourcePort": 7,
         "destinationPort": 0,
         "domain": 0,
-        "bandwidth_mbps": 100,
         "delay": 7.309
       },
       {
@@ -82,7 +77,6 @@
         "sourcePort": 0,
         "destinationPort": 7,
         "domain": 0,
-        "bandwidth_mbps": 100,
         "delay": 7.309
       }
     ]
