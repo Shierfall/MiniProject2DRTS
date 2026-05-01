@@ -6,6 +6,13 @@ Implements CBS analytical WCRT, a discrete-event simulator, and strict-priority 
 
 ---
 
+## Group 21
+    Arturo Cortes - s225187
+    Kasim Hussain - s225165
+    Landon Hassin - s252773
+    Matthew Asano - s225134
+
+---
 ## Features
 
 | Feature | Description |
@@ -151,10 +158,6 @@ Three JSON files per test case:
 
 Project baseline uses **idleSlope = sendSlope = 0.5**. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5`; no extra flags needed.
 
-### Note on test_case_2
-
-`test_case_2` contains a 1 Gbps inter-switch link. The reference `WCRTs.csv` was generated with a tool that treated every link as 100 Mbps. This tool correctly uses actual per-link bandwidth, producing lower/tighter WCRTs on the fast segment. Test `test_analytical_wcrt_test_case_2_uses_actual_link_bandwidth` documents this.
-
 ---
 
 ## Project Structure
@@ -178,5 +181,5 @@ MiniProject2DRTS/
 │       └── test_case_3/
 ├── output_data/             # Generated on first run
 ├── requirement.txt
-└── README.md
+└── README.md                # Where you are reading this 
 ```
