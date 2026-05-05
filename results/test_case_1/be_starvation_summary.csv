@@ -1,0 +1,3 @@
+ID,Deadline_us,CBS_Simulated_WCRT_us,CBS_Samples,CBS_Deadline_Misses,CBS_Miss_Ratio,SP_Simulated_WCRT_us,SP_Samples,SP_Deadline_Misses,SP_Miss_Ratio,Starved_under_SP
+8,1000.000,514.720,2,0,0.0000,441.120,2,0,0.0000,0
+9,1000.000,514.720,2,0,0.0000,441.120,2,0,0.0000,0
