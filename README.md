@@ -13,6 +13,7 @@ Implements CBS analytical WCRT, a discrete-event simulator, and strict-priority 
     Matthew Asano - s225134
 
 ---
+
 ## Features
 
 | Feature | Description |
@@ -25,7 +26,7 @@ Implements CBS analytical WCRT, a discrete-event simulator, and strict-priority 
 | BE starvation detection | Flags streams starved under SP but not under CBS |
 | Credit traces | Class-B CBS credit over time per link (for plotting) |
 | Figure generation | 7 matplotlib figures: breakdowns, scatter, credit trace, BE comparison, schedulability |
-| idleSlope policies | `fixed` (alpha=0.5, project baseline) or `proportional` (utilisation-derived from traffic parameters) |
+| idleSlope policies | `fixed` (alpha=0.5 on all links, default) or `proportional` (utilisation-derived from traffic parameters) |
 
 ---
 
@@ -106,6 +107,24 @@ Derives per-link slopes from stream utilisation. Produces tighter bounds when li
 
 ---
 
+## Test Case Notes
+
+- All links use 100 Mbps in the provided examples. The test cases set
+  `default_bandwidth_mbps: 100` in `topology.json` with no per-link overrides.
+- `WCRTs.csv` is tab-separated and uses a dot decimal separator (e.g., `603.2`).
+
+---
+
+## Web GUI
+
+```bash
+python3 -m wcrt_tool --web
+```
+
+Provides a browser interface to a subset of features.
+
+---
+
 ## Output Files
 
 All files written to `output_data/<case-name>/`:
@@ -154,9 +173,9 @@ Three JSON files per test case:
 
 ---
 
-## Project Baseline
+## Default Configuration
 
-Project baseline uses **idleSlope = sendSlope = 0.5**. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5`; no extra flags needed.
+Baseline: `idleSlope = sendSlope = 0.5` on every link. Tool defaults: `--policy fixed --alpha-a 0.5 --alpha-b 0.5`; no extra flags needed.
 
 ---
 
@@ -181,5 +200,5 @@ MiniProject2DRTS/
 │       └── test_case_3/
 ├── output_data/             # Generated on first run
 ├── requirement.txt
-└── README.md                # Where you are reading this 
+└── README.md
 ```

@@ -3,191 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSN WCRT Analysis Tool</title>
+<title>TSN WCRT Analysis</title>
 <style>
+  /* ══ Retro OS Theme ════════════════════════════════════════════ */
   :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --border: #2d3045;
-    --accent: #4f7cff;
-    --accent-dim: #2a3f80;
-    --text: #e2e4ef;
-    --muted: #7a7f99;
-    --green: #22c55e;
-    --red: #ef4444;
-    --yellow: #f59e0b;
-    --radius: 8px;
-    --font: "Inter", "Segoe UI", system-ui, sans-serif;
+    --os-bg:         #1e1a2a;
+    --os-surface:    #2c2838;
+    --os-hi:         #6a5f88;
+    --os-lo:         #0e0c1a;
+    --os-title-a:    #6a508a;
+    --os-title-b:    #3a2f62;
+    --os-accent:     #c4923a;
+    --os-accent-dim: #7a5820;
+    --os-text:       #e2daf4;
+    --os-muted:      #8880a8;
+    --os-input:      #18152a;
+    --os-ok:         #5ab08a;
+    --os-err:        #c05070;
+    --os-warn:       #d4943a;
+    --os-font:       Tahoma, Verdana, "Segoe UI", system-ui, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; min-height: 100vh; }
+  body {
+    background: var(--os-bg);
+    color: var(--os-text);
+    font-family: var(--os-font);
+    font-size: 13px;
+    min-height: 100vh;
+  }
 
-  /* ── layout ── */
-  .shell { display: grid; grid-template-columns: 320px 1fr; min-height: 100vh; }
-  .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 24px 20px; display: flex; flex-direction: column; gap: 24px; }
-  .main { padding: 32px 36px; overflow-x: auto; }
+  /* ── Layout ──────────────────────────────────────────────────── */
+  .shell { display: grid; grid-template-columns: 300px 1fr; min-height: 100vh; }
+  .sidebar {
+    background: var(--os-surface);
+    border-right: 2px solid var(--os-lo);
+    box-shadow: inset -1px 0 0 var(--os-hi);
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-header {
+    background: linear-gradient(to bottom, var(--os-title-a), var(--os-title-b));
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--os-lo);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 1px 0 var(--os-hi);
+  }
+  .sidebar-brand {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.55);
+  }
+  .sidebar-brand small { font-size: 10px; color: rgba(255,255,255,0.65); font-weight: 400; display: block; margin-top: 1px; }
+  .sidebar-body { padding: 14px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .main { padding: 20px 24px; overflow-x: auto; }
 
-  /* ── header ── */
-  .logo { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
-  .logo span { color: var(--accent); }
-  .subtitle { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  /* ── Section labels ──────────────────────────────────────────── */
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--os-muted);
+    margin-bottom: 8px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--os-lo);
+  }
 
-  /* ── tabs ── */
-  .tabs { display: flex; gap: 4px; background: var(--bg); border-radius: var(--radius); padding: 4px; }
-  .tab { flex: 1; padding: 6px 0; border: none; background: none; color: var(--muted); font-size: 12px; font-weight: 500; cursor: pointer; border-radius: 6px; transition: all 0.15s; }
-  .tab.active { background: var(--accent-dim); color: var(--accent); }
+  /* ── Tabs ────────────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 2px solid var(--os-lo);
+    margin-bottom: 10px;
+  }
+  .tab {
+    flex: 1;
+    padding: 4px 0;
+    border: 2px solid;
+    border-color: var(--os-hi) var(--os-lo) transparent var(--os-hi);
+    background: var(--os-bg);
+    color: var(--os-muted);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--os-font);
+    cursor: pointer;
+    margin-bottom: -2px;
+  }
+  .tab.active {
+    background: var(--os-surface);
+    color: var(--os-text);
+    border-bottom-color: var(--os-surface);
+  }
+  .tab:hover:not(.active) { color: var(--os-text); background: rgba(106,95,136,0.3); }
 
-  /* ── form sections ── */
-  .section-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 10px; }
-  .panel { display: none; flex-direction: column; gap: 12px; }
+  /* ── Panels ──────────────────────────────────────────────────── */
+  .panel { display: none; flex-direction: column; gap: 10px; }
   .panel.active { display: flex; }
 
-  /* ── form controls ── */
-  label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
+  /* ── Form controls ───────────────────────────────────────────── */
+  label {
+    font-size: 10px;
+    color: var(--os-muted);
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
   select, input[type="number"], input[type="file"] {
-    width: 100%; background: var(--bg); border: 1px solid var(--border);
-    color: var(--text); border-radius: 6px; padding: 7px 10px; font-size: 13px;
-    outline: none; transition: border-color 0.15s;
+    width: 100%;
+    background: var(--os-input);
+    border: 2px solid;
+    border-color: var(--os-lo) var(--os-hi) var(--os-hi) var(--os-lo);
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,0.3);
+    color: var(--os-text);
+    border-radius: 0;
+    padding: 4px 7px;
+    font-size: 12px;
+    font-family: var(--os-font);
+    outline: none;
   }
-  select:focus, input[type="number"]:focus { border-color: var(--accent); }
-  input[type="file"] { padding: 6px; cursor: pointer; }
+  select:focus, input[type="number"]:focus {
+    border-color: var(--os-accent) var(--os-hi) var(--os-hi) var(--os-accent);
+    outline: 1px dotted var(--os-accent);
+  }
+  input[type="file"] { padding: 4px; cursor: pointer; font-size: 11px; }
+  option { background: var(--os-surface); color: var(--os-text); }
 
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-  /* ── run button ── */
+  /* ── Run button ──────────────────────────────────────────────── */
   .btn-run {
-    margin-top: 6px; padding: 10px; background: var(--accent); color: #fff;
-    border: none; border-radius: var(--radius); font-size: 14px; font-weight: 600;
-    cursor: pointer; transition: opacity 0.15s; width: 100%;
+    margin-top: 4px;
+    padding: 6px 14px;
+    background: linear-gradient(to bottom, var(--os-accent), var(--os-accent-dim));
+    color: #fff;
+    border: 2px solid;
+    border-color: #c8880e var(--os-lo) var(--os-lo) #c8880e;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--os-font);
+    cursor: pointer;
+    width: 100%;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2), inset -1px -1px 0 rgba(0,0,0,0.3);
   }
-  .btn-run:hover { opacity: 0.88; }
-  .btn-run:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-run:hover { background: linear-gradient(to bottom, #d4a04a, #8a6030); }
+  .btn-run:active {
+    border-color: var(--os-lo) #c8880e #c8880e var(--os-lo);
+    box-shadow: inset -1px -1px 0 rgba(255,255,255,0.2), inset 1px 1px 0 rgba(0,0,0,0.3);
+    transform: translate(1px, 1px);
+  }
+  .btn-run:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-  /* ── main area ── */
-  .empty-state { color: var(--muted); text-align: center; margin-top: 120px; font-size: 15px; }
-  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  /* ── Empty state ─────────────────────────────────────────────── */
+  .empty-state {
+    color: var(--os-muted);
+    text-align: center;
+    margin-top: 100px;
+    font-size: 13px;
+  }
 
-  .results-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
-  .results-title { font-size: 20px; font-weight: 700; }
-  .meta { font-size: 12px; color: var(--muted); }
+  /* ── Results header ──────────────────────────────────────────── */
+  .results-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--os-lo);
+  }
+  .results-title { font-size: 14px; font-weight: 700; color: var(--os-text); }
+  .meta { font-size: 11px; color: var(--os-muted); }
 
-  .warn-box { background: #2a1f00; border: 1px solid #6b4400; border-radius: var(--radius); padding: 10px 14px; margin-bottom: 16px; font-size: 12px; color: var(--yellow); }
+  /* ── Warn / error boxes ──────────────────────────────────────── */
+  .warn-box {
+    background: #2a2010;
+    border: 2px solid;
+    border-color: #8a6020 var(--os-lo) var(--os-lo) #8a6020;
+    padding: 7px 12px;
+    margin-bottom: 12px;
+    font-size: 11px;
+    color: var(--os-warn);
+  }
+  .err-box {
+    background: #2a1020;
+    border: 2px solid;
+    border-color: #8a2848 var(--os-lo) var(--os-lo) #8a2848;
+    padding: 10px 14px;
+    color: var(--os-err);
+    font-size: 12px;
+    margin-top: 20px;
+  }
 
-  /* ── table ── */
+  /* ── Table ───────────────────────────────────────────────────── */
   .tbl-wrap { overflow-x: auto; }
-  table { border-collapse: collapse; width: 100%; font-size: 13px; }
-  th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding: 9px 14px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table { border-collapse: collapse; width: 100%; font-size: 12px; }
+  th {
+    background: linear-gradient(to bottom, var(--os-title-a), var(--os-title-b));
+    color: #fff;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 10px;
+    text-align: right;
+    border-bottom: 2px solid var(--os-lo);
+    border-right: 1px solid var(--os-lo);
+    white-space: nowrap;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  }
   th:first-child, th:nth-child(2) { text-align: left; }
-  td { padding: 9px 14px; border-bottom: 1px solid var(--border); text-align: right; color: var(--text); }
+  td {
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--os-lo);
+    border-right: 1px solid var(--os-lo);
+    text-align: right;
+    color: var(--os-text);
+  }
   td:first-child, td:nth-child(2) { text-align: left; }
-  tr:hover td { background: rgba(79,124,255,0.05); }
+  tr:hover td { background: rgba(100,80,140,0.2); }
 
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; }
-  .badge-A  { background: #1a3060; color: #6aa3ff; }
-  .badge-B  { background: #2a1f50; color: #c084fc; }
-  .badge-BE { background: #1f2a1a; color: #86efac; }
-  .ok  { color: var(--green); font-weight: 600; }
-  .bad { color: var(--red);   font-weight: 600; }
-  .na  { color: var(--muted); }
+  /* ── Badges ──────────────────────────────────────────────────── */
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 0;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--os-font);
+    border: 1px solid;
+  }
+  .badge-A  { background: #1a2a50; color: #80b0f0; border-color: #2a4080; }
+  .badge-B  { background: #28185a; color: #c090f8; border-color: #4830a0; }
+  .badge-BE { background: #182a20; color: #80d0a0; border-color: #2a5040; }
+  .ok  { color: var(--os-ok);  font-weight: 700; }
+  .bad { color: var(--os-err); font-weight: 700; }
+  .na  { color: var(--os-muted); }
 
-  /* ── chart ── */
-  .chart-wrap { margin-top: 28px; }
-  .chart-wrap img { max-width: 100%; border-radius: var(--radius); border: 1px solid var(--border); background: #fff; }
+  /* ── Chart ───────────────────────────────────────────────────── */
+  .chart-wrap { margin-top: 22px; }
+  .chart-wrap img {
+    max-width: 100%;
+    border: 2px solid;
+    border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+    background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  }
 
-  /* ── error ── */
-  .err-box { background: #2a0f0f; border: 1px solid #7f1f1f; border-radius: var(--radius); padding: 12px 16px; color: var(--red); font-size: 13px; margin-top: 24px; }
-
-  /* ── spinner ── */
-  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 6px; }
+  /* ── Spinner ─────────────────────────────────────────────────── */
+  .spinner {
+    display: inline-block;
+    width: 13px; height: 13px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
 <div class="shell">
-  <!-- ── sidebar ── -->
+  <!-- ── Sidebar ── -->
   <aside class="sidebar">
-
-    <div>
-      <div class="section-label">Input Source</div>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab('builtin')">Built-in</button>
-        <button class="tab" onclick="switchTab('upload')">Upload</button>
-      </div>
+    <div class="sidebar-header">
+      <div class="sidebar-brand">TSN WCRT Analysis<small>CBS / SP Scheduler</small></div>
     </div>
 
-    <!-- built-in panel -->
-    <div id="panel-builtin" class="panel active">
+    <div class="sidebar-body">
+      <!-- Input source -->
       <div>
-        <label for="test_case">Test Case</label>
-        <select id="test_case" name="test_case">
-          {% for tc in test_cases %}
-          <option value="{{ tc }}">{{ tc }}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-
-    <!-- upload panel -->
-    <div id="panel-upload" class="panel">
-      <div>
-        <label>topology.json *</label>
-        <input type="file" id="topology_file" accept=".json">
-      </div>
-      <div>
-        <label>streams.json *</label>
-        <input type="file" id="streams_file" accept=".json">
-      </div>
-      <div>
-        <label>routes.json *</label>
-        <input type="file" id="routes_file" accept=".json">
-      </div>
-      <div>
-        <label>WCRTs.csv (optional reference)</label>
-        <input type="file" id="reference_file" accept=".csv">
-      </div>
-    </div>
-
-    <!-- parameters -->
-    <div>
-      <div class="section-label">Parameters</div>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div>
-          <label for="mode">Scheduling Mode</label>
-          <select id="mode">
-            <option value="cbs">CBS (Credit-Based Shaper)</option>
-            <option value="sp">SP (Strict Priority)</option>
-          </select>
+        <div class="section-label">Input Source</div>
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab('builtin')">Built-in</button>
+          <button class="tab" onclick="switchTab('upload')">Upload</button>
         </div>
-        <div>
-          <label for="policy">idleSlope Policy</label>
-          <select id="policy">
-            <option value="fixed">Fixed (uniform α)</option>
-            <option value="proportional">Proportional (per-link)</option>
-          </select>
-        </div>
-        <div class="row2">
+
+        <!-- built-in panel -->
+        <div id="panel-builtin" class="panel active">
           <div>
-            <label for="alpha_a">α Class A</label>
-            <input type="number" id="alpha_a" value="0.5" min="0.01" max="0.99" step="0.01">
-          </div>
-          <div>
-            <label for="alpha_b">α Class B</label>
-            <input type="number" id="alpha_b" value="0.5" min="0.01" max="0.99" step="0.01">
+            <label for="test_case">Test Case</label>
+            <select id="test_case" name="test_case">
+              {% for tc in test_cases %}
+              <option value="{{ tc }}">{{ tc }}</option>
+              {% endfor %}
+            </select>
           </div>
         </div>
-        <div>
-          <label for="duration">Sim Duration (μs, blank = auto)</label>
-          <input type="number" id="duration" placeholder="e.g. 100000" min="1000" step="1000">
+
+        <!-- upload panel -->
+        <div id="panel-upload" class="panel">
+          <div>
+            <label>topology.json *</label>
+            <input type="file" id="topology_file" accept=".json">
+          </div>
+          <div>
+            <label>streams.json *</label>
+            <input type="file" id="streams_file" accept=".json">
+          </div>
+          <div>
+            <label>routes.json *</label>
+            <input type="file" id="routes_file" accept=".json">
+          </div>
+          <div>
+            <label>WCRTs.csv (optional reference)</label>
+            <input type="file" id="reference_file" accept=".csv">
+          </div>
         </div>
       </div>
-    </div>
 
-    <button class="btn-run" id="btn-run" onclick="runAnalysis()">Run Analysis</button>
+      <!-- Parameters -->
+      <div>
+        <div class="section-label">Parameters</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div>
+            <label for="mode">Scheduling Mode</label>
+            <select id="mode">
+              <option value="cbs">CBS (Credit-Based Shaper)</option>
+              <option value="sp">SP (Strict Priority)</option>
+            </select>
+          </div>
+          <div>
+            <label for="policy">idleSlope Policy</label>
+            <select id="policy">
+              <option value="fixed">Fixed (uniform α = 0.5)</option>
+              <option value="proportional">Proportional (per-link)</option>
+            </select>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="alpha_a">α Class A</label>
+              <input type="number" id="alpha_a" value="0.5" min="0.01" max="0.99" step="0.01">
+            </div>
+            <div>
+              <label for="alpha_b">α Class B</label>
+              <input type="number" id="alpha_b" value="0.5" min="0.01" max="0.99" step="0.01">
+            </div>
+          </div>
+          <div>
+            <label for="duration">Sim Duration (μs, blank = auto)</label>
+            <input type="number" id="duration" placeholder="e.g. 100000" min="1000" step="1000">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-run" id="btn-run" onclick="runAnalysis()">Run Analysis</button>
+    </div>
   </aside>
 
-  <!-- ── main ── -->
+  <!-- ── Main ── -->
   <main class="main" id="main">
-    <div class="empty-state"> 
+    <div class="empty-state">
       <div>Select a test case and click <strong>Run Analysis</strong></div>
     </div>
   </main>
@@ -211,11 +382,11 @@
     btn.innerHTML = '<span class="spinner"></span>Running…';
 
     const fd = new FormData();
-    fd.append("source", activeTab);
-    fd.append("mode",   document.getElementById("mode").value);
-    fd.append("policy", document.getElementById("policy").value);
-    fd.append("alpha_a", document.getElementById("alpha_a").value);
-    fd.append("alpha_b", document.getElementById("alpha_b").value);
+    fd.append("source",   activeTab);
+    fd.append("mode",     document.getElementById("mode").value);
+    fd.append("policy",   document.getElementById("policy").value);
+    fd.append("alpha_a",  document.getElementById("alpha_a").value);
+    fd.append("alpha_b",  document.getElementById("alpha_b").value);
     fd.append("duration", document.getElementById("duration").value);
 
     if (activeTab === "builtin") {
@@ -274,8 +445,7 @@
       let sched = '<span class="na">—</span>';
       if (r.schedulable === true)  sched = '<span class="ok">✓ Yes</span>';
       if (r.schedulable === false) sched = '<span class="bad">✗ No</span>';
-      let refCol = "";
-      let diffCol = "";
+      let refCol = "", diffCol = "";
       if (hasRef) {
         refCol = r.reference !== null ? `<td>${r.reference.toFixed(3)}</td>` : `<td class="na">—</td>`;
         if (r.diff_vs_ref !== null) {
